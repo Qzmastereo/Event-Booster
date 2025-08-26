@@ -73,6 +73,12 @@
     margin-right: auto;
     width: 270px;
     z-index: 2;
+    transition: all .3s cubic-bezier(.19,1,.22,1) .2s;
+}
+.input-block:hover {
+    transform: scale(1.05);       
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
+    border-radius: 25px;          
 }
 .form-control {
     padding: 10px 30px;
@@ -110,6 +116,11 @@
     transition: all .3s cubic-bezier(.19,1,.22,1) .2s;
     position: relative;
     margin-top: 25px;
+}
+.choose-input:hover {
+    transform: scale(1.05);       
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
+    border-radius: 25px;          
 }
 @media screen and (min-width: 768px) {
     .choose-input {
