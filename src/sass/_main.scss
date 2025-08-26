@@ -1,0 +1,11 @@
+.section {
+ width: 1000px;
+  margin: 0 auto; /* автоматичні відступи зліва і справа */
+  display: flex;
+  flex-wrap: wrap;
+    gap: 56px;
+}
+.card {
+  width: 194px; /* щоб 4 картки влізли в один ряд */
+  height: 312px;
+}
