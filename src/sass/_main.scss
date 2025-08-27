@@ -4,8 +4,53 @@
   display: flex;
   flex-wrap: wrap;
     gap: 56px;
+    margin-bottom: 50px;
 }
 .card {
   width: 194px;
   height: 312px;
+}
+.title {
+  color: #DC56C5;
+  font-family: 'Montserrat';
+font-weight: 700;
+font-size: 16px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+}
+.data {
+  color: #FFFFFF;
+  font-family: 'Montserrat';
+font-weight: 400;
+font-size: 16px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+}
+.place {
+  color: #FFFFFF;
+  font-family: 'Montserrat';
+font-weight: 600;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+  margin-top: 80px;
+}
+.pagination-btn {
+  color: #FFFFFF;
+  background: none;
+  border: 1px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.pagination-btn:focus {
+color: #DC56C5;
+border-color: #DC56C5;
 }
