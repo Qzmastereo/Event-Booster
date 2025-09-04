@@ -227,23 +227,59 @@ body {
 .country-list {
   width: 270px;
   margin-left: -30px;
-  height: 210px;
-  overflow-y: scroll;
   color: #ccc;
   transform: scaleY(1);
   transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
-}
-
-.choose-input :not(.active) + .country-list {
-  padding-top: 0;
-  height: 0;
-  transform: scaleY(0);
 }
 
 .choose-input svg, .input-form svg {
   position: absolute;
   top: 14px;
   right: 30px;
+}
+
+.choose-input svg {
+  position: absolute;
+  top: 14px;
+}
+
+.country-list.open {
+  max-height: 400px;
+}
+
+.country-list li {
+  padding: 8px 12px;
+  color: #fff;
+}
+
+.choose-input {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.choose-country {
+  display: inline-block;
+  width: 200px;
+}
+
+.country-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #1c1c1c;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  overflow-y: auto;
+  transition: max-height 0.3s ease;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.country-list li:hover {
+  background: #2c2c2c;
 }
 
 .section {
