@@ -1,44 +1,41 @@
-import { BASE_URL, KEY } from "./base-api.js";
-import { COUNTRIES } from "./countries.js";
+import { BASE_URL, KEY } from './base-api.js';
 
-const countryList = document.getElementById("countries");
-const eventsContainer = document.getElementById("events");
+const eventsContainer = document.getElementById('events');
+let events = [];
 
-let events = []; 
-
-fetch(`${BASE_URL}events.json?apikey=${KEY}`)
-  .then(response => response.json())
-  .then(data => {
-    events = data._embedded.events;
-    console.log("Отримав події:", events);
-  })
-  .catch(err => console.error(err));
-
-Object.entries(COUNTRIES).forEach(([code, name]) => {
-  const li = document.createElement("li");
-  li.textContent = name;
-  li.addEventListener("click", () => renderEventsByCountry(code));
-  countryList.appendChild(li);
-});
-
-function renderEventsByCountry(code) {
-  eventsContainer.innerHTML = ""; 
-  const filtered = events.filter(e => e._embedded.venues[0].country.countryCode === code);
-
-  if (filtered.length === 0) {
-    eventsContainer.innerHTML = `<p>Немає подій у цій країні</p>`;
+function fetchEvents(countryCode = 'US') {
+  const url = `${BASE_URL}events.json?countryCode=${countryCode}&apikey=${KEY}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      events = data._embedded?.events || [];
+      renderEvents(events);
+    })
+    .catch(err => console.error(err));
+}
+function renderEvents(list) {
+  eventsContainer.innerHTML = '';
+  if (!list || list.length === 0) {
+    eventsContainer.innerHTML = `<p class="no-events">Подій у цій країні не знайдено</p>`;
     return;
   }
-
-  filtered.forEach(ev => {
-    const venue = ev._embedded.venues[0];
-    const card = document.createElement("div");
-    card.classList.add("card");
+  const limited = list.slice(0, 20); 
+  limited.forEach(ev => {
+    const venue = ev._embedded?.venues?.[0];
+    const image = ev.images?.[0]?.url;
+    const card = document.createElement('div');
+    card.classList.add('card');
     card.innerHTML = `
-      <h3>${ev.name}</h3>
-      <p>📅 ${ev.dates.start.localDate}</p>
-      <p>📍 ${venue.name}, ${venue.city.name}</p>
+      <img src="${image}" alt="Event image" class="event-img">
+      <h3 class="title">${ev.name}</h3>
+      <p class="data">${ev.dates.start.localDate}</p>
+      <p class="place">${venue?.city?.name || '-'}, ${venue?.name || '-'}</p>
     `;
     eventsContainer.appendChild(card);
   });
 }
+
+export function renderEventsByCountry(code) {
+  fetchEvents(code);
+}
+fetchEvents();
