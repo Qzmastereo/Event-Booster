@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   gap: 56px;
   margin-bottom: 50px;
+  justify-content: center;
 }
 
 .card {
@@ -108,4 +109,7 @@
   font-size: 18px;
   text-align: center;
   margin-top: 20px;
+}
+#countries{
+  display: none;
 }
