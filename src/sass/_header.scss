@@ -28,31 +28,89 @@
 }
 
 .header-txt {
-    padding-top: 78px;
-    margin-bottom: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    width: 212px;
-    font-weight: 900;
-    font-size: 18px;
-    line-height: 1.22;
-    text-align: center;
-    color: #dc56c5;
+            margin-top: 80px;
+            margin-bottom: 25px;
+            font-weight: 900;
+            font-size: 46px;
+            line-height: 1.22;
+            text-align: center;
+            color: #2a0c23;
+            text-shadow: 0 0 8px #dc56c5;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            z-index: 2;
+            animation: neonGlow 3s infinite alternate;
+            will-change: text-shadow, color;
+        }
 
+        @keyframes neonGlow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 5px #dc56c5,
+                    0 0 10px #dc56c5,
+                    0 0 20px #ff65bd,
+                    0 0 40px #ff2483;
+                color: #ffe6ff;
+            }
+            50% {
+                text-shadow: 
+                    0 0 10px #ff65bd,
+                    0 0 20px #ff65bd,
+                    0 0 40px #ff2483,
+                    0 0 80px #ff2483;
+                color: #ffccee;
+            }
+        }
 
-    @media screen and (min-width: 768px) {
-        width: 353px;
-        font-size: 30px;
-        padding-top: 40px;
-    }
-    @media screen and (min-width: 1280px) {
-        width: 589px;
-        font-size: 50px;
-        white-space: inherit;
-    }
-}
+        .neon-text {
+            position: relative;
+            display: inline-block;
+            padding: 0 5px;
+        }
 
+        .flicker {
+            animation: shine 2s forwards, blink 3s 2s infinite;
+        }
+
+        .fast-flicker {
+            animation: shine 2s forwards, blink 10s 1s infinite;
+        }
+
+        .medium-flicker {
+            animation: shine 2s forwards, blink 5s 1.5s infinite;
+        }
+
+        .slow-flicker {
+            animation: shine 2s forwards, blink 7s 0.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 22%, 36%, 75% {
+                color: #ffe6ff;
+                text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd, -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd, 0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+            }
+            28%, 33% {
+                color: #ff65bd;
+                text-shadow: none;
+            }
+            82%, 97% {
+                color: #ff2483;
+                text-shadow: none;
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                color: #2a0c23;
+                text-shadow: none;
+            }
+            100% {
+                color: #2a0c23;
+                text-shadow: 0 0 8px #dc56c5;
+            }
+        }
 
 @media screen and (min-width: 768px) {
     .searching-block {
@@ -191,55 +249,9 @@
 .country-list li:hover {
   background: #2c2c2c;
 }
-.header-txt {
 
-    animation: neonGlow 3s infinite alternate;
-}
-
-@keyframes neonGlow {
-    0% {
-        text-shadow: 
-          0 0 5px #ff008c,
-          0 0 10px #ff008c,
-          0 0 20px #ff33a8,
-          0 0 40px #ff4db8,
-          0 0 80px #ff66c7;
-        color: #ffe6f3;
-    }
-    25% {
-        text-shadow: 
-          0 0 8px #ff1a9b,
-          0 0 16px #ff4db8,
-          0 0 32px #ff66c7,
-          0 0 64px #ff80d1,
-          0 0 128px #ff99db;
-        color: #ffd6ef;
-    }
-    50% {
-        text-shadow: 
-          0 0 10px #ff3399,
-          0 0 20px #ff66c7,
-          0 0 40px #ff80d1,
-          0 0 80px #ff99db,
-          0 0 160px #ffb3e5;
-        color: #ffccee;
-    }
-    75% {
-        text-shadow: 
-          0 0 8px #e60073,
-          0 0 16px #ff3399,
-          0 0 32px #ff4db8,
-          0 0 64px #ff66c7,
-          0 0 128px #ff80d1;
-        color: #ffe0f0;
-    }
-    100% {
-        text-shadow: 
-          0 0 5px #cc007a,
-          0 0 10px #e60073,
-          0 0 20px #ff008c,
-          0 0 40px #ff3399,
-          0 0 80px #ff4db8;
-        color: #fff0f8;
-    }
+.titel-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
