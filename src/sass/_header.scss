@@ -40,6 +40,7 @@
     text-align: center;
     color: #dc56c5;
 
+
     @media screen and (min-width: 768px) {
         width: 353px;
         font-size: 30px;
@@ -189,4 +190,56 @@
 
 .country-list li:hover {
   background: #2c2c2c;
+}
+.header-txt {
+
+    animation: neonGlow 3s infinite alternate;
+}
+
+@keyframes neonGlow {
+    0% {
+        text-shadow: 
+          0 0 5px #ff008c,
+          0 0 10px #ff008c,
+          0 0 20px #ff33a8,
+          0 0 40px #ff4db8,
+          0 0 80px #ff66c7;
+        color: #ffe6f3;
+    }
+    25% {
+        text-shadow: 
+          0 0 8px #ff1a9b,
+          0 0 16px #ff4db8,
+          0 0 32px #ff66c7,
+          0 0 64px #ff80d1,
+          0 0 128px #ff99db;
+        color: #ffd6ef;
+    }
+    50% {
+        text-shadow: 
+          0 0 10px #ff3399,
+          0 0 20px #ff66c7,
+          0 0 40px #ff80d1,
+          0 0 80px #ff99db,
+          0 0 160px #ffb3e5;
+        color: #ffccee;
+    }
+    75% {
+        text-shadow: 
+          0 0 8px #e60073,
+          0 0 16px #ff3399,
+          0 0 32px #ff4db8,
+          0 0 64px #ff66c7,
+          0 0 128px #ff80d1;
+        color: #ffe0f0;
+    }
+    100% {
+        text-shadow: 
+          0 0 5px #cc007a,
+          0 0 10px #e60073,
+          0 0 20px #ff008c,
+          0 0 40px #ff3399,
+          0 0 80px #ff4db8;
+        color: #fff0f8;
+    }
 }
