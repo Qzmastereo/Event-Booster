@@ -41,10 +41,13 @@
             border-radius: 10px;
             max-width: 800px;
             z-index: 2;
-            animation: neonGlow 3s infinite alternate;
-            will-change: text-shadow, color;
+            animation: neonGlow 10s infinite alternate;
+    will-change: text-shadow, color;
         }
-
+        .header-txt.animate-header {
+    animation: neonGlow 10s infinite alternate;
+    will-change: text-shadow, color;
+}
         @keyframes neonGlow {
             0%, 100% {
                 text-shadow: 
