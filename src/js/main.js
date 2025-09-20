@@ -4,6 +4,9 @@ import { initSearch } from './filter.js';
 const eventsContainer = document.getElementById('events');
 let events = [];
 
+let currentPage = 1;
+const perPage = 20;
+
 export function getEvents() {
   return events;
 }
@@ -14,24 +17,26 @@ function fetchEvents(countryCode = 'US') {
     .then(res => res.json())
     .then(data => {
       events = data._embedded?.events || [];
+      currentPage = 1;
       renderEvents(events);
       initSearch(events); 
+      setupPagination();
     })
     .catch(err => console.error(err));
 }
 
-export function renderEvents(list) {
-  const eventsContainer = document.getElementById('events');
+export function renderEvents() {
   eventsContainer.innerHTML = '';
-
-  if (!list || list.length === 0) {
+  if (!events || events.length === 0) {
     eventsContainer.innerHTML = `<p class="no-events">Подій не знайдено</p>`;
     return;
   }
 
-  const limited = list.slice(0, 20);
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+  const pageItems = events.slice(start, end);
 
-  limited.forEach((ev, i) => {
+  pageItems.forEach((ev, i) => {
     const venue = ev._embedded?.venues?.[0];
     const image = ev.images?.[0]?.url;
 
@@ -50,6 +55,26 @@ export function renderEvents(list) {
   });
 }
 
+function setupPagination() {
+  const buttons = document.querySelectorAll('.pagination-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const page = btn.textContent.trim();
+      if (page === '...') return;
+
+      const totalPages = Math.ceil(events.length / perPage);
+      let newPage = Number(page);
+
+      if (newPage > totalPages) newPage = totalPages;
+      if (newPage < 1) newPage = 1;
+
+      currentPage = newPage;
+      renderEvents(events);
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+}
 
 export function renderEventsByCountry(code) {
   fetchEvents(code);
