@@ -3,8 +3,8 @@ import { initSearch } from './filter.js';
 
 const eventsContainer = document.getElementById('events');
 
-let events = [];        // усі події
-let visibleEvents = []; // ті, що показуємо після пошуку/фільтра
+let events = [];        
+let visibleEvents = []; 
 
 let currentPage = 1;
 const perPage = 20;
@@ -22,7 +22,7 @@ function fetchEvents(countryCode = 'US') {
     .then(res => res.json())
     .then(data => {
       events = data._embedded?.events || [];
-      visibleEvents = [...events]; // спочатку показуємо всі
+      visibleEvents = [...events]; 
       currentPage = 1;
       renderEvents(visibleEvents);
       initSearch(); 

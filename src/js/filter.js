@@ -16,7 +16,7 @@ export function initSearch() {
     const allEvents = getEvents(); 
 
     if (!query) {
-      // показуємо всі події
+      
       visibleEvents = [...allEvents];
       currentPage = 1;
       renderEvents(visibleEvents);
