@@ -2,13 +2,18 @@ import { BASE_URL, KEY } from './base-api.js';
 import { initSearch } from './filter.js';
 
 const eventsContainer = document.getElementById('events');
-let events = [];
+
+let events = [];        
+let visibleEvents = []; 
 
 let currentPage = 1;
 const perPage = 20;
 
 export function getEvents() {
   return events;
+}
+export function getVisibleEvents() {
+  return visibleEvents;
 }
 
 function fetchEvents(countryCode = 'US') {
@@ -17,24 +22,25 @@ function fetchEvents(countryCode = 'US') {
     .then(res => res.json())
     .then(data => {
       events = data._embedded?.events || [];
+      visibleEvents = [...events]; 
       currentPage = 1;
-      renderEvents(events);
-      initSearch(events); 
+      renderEvents(visibleEvents);
+      initSearch(); 
       setupPagination();
     })
     .catch(err => console.error(err));
 }
 
-export function renderEvents() {
+export function renderEvents(list) {
   eventsContainer.innerHTML = '';
-  if (!events || events.length === 0) {
+  if (!list || list.length === 0) {
     eventsContainer.innerHTML = `<p class="no-events">Подій не знайдено</p>`;
     return;
   }
 
   const start = (currentPage - 1) * perPage;
   const end = start + perPage;
-  const pageItems = events.slice(start, end);
+  const pageItems = list.slice(start, end);
 
   pageItems.forEach((ev, i) => {
     const venue = ev._embedded?.venues?.[0];
@@ -62,14 +68,14 @@ function setupPagination() {
       const page = btn.textContent.trim();
       if (page === '...') return;
 
-      const totalPages = Math.ceil(events.length / perPage);
+      const totalPages = Math.ceil(visibleEvents.length / perPage);
       let newPage = Number(page);
 
       if (newPage > totalPages) newPage = totalPages;
       if (newPage < 1) newPage = 1;
 
       currentPage = newPage;
-      renderEvents(events);
+      renderEvents(visibleEvents);
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     });
