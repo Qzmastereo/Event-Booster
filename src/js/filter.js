@@ -1,4 +1,4 @@
-import { renderEvents, getEvents, getVisibleEvents } from './main.js';
+import { renderEvents, getEvents, setVisibleEvents } from './main.js';
 
 function debounce(func, delay) {
   let timer;
@@ -16,10 +16,8 @@ export function initSearch() {
     const allEvents = getEvents(); 
 
     if (!query) {
-      
-      visibleEvents = [...allEvents];
-      currentPage = 1;
-      renderEvents(visibleEvents);
+      setVisibleEvents([...allEvents]);
+      renderEvents(allEvents);
       return;
     }
 
@@ -32,9 +30,8 @@ export function initSearch() {
       return;
     }
 
-    visibleEvents = filtered;
-    currentPage = 1;
-    renderEvents(visibleEvents);
+    setVisibleEvents(filtered);
+    renderEvents(filtered);
   }, 800);
 
   searchInput.addEventListener('input', handleSearch);

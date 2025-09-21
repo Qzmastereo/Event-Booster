@@ -3,8 +3,8 @@ import { initSearch } from './filter.js';
 
 const eventsContainer = document.getElementById('events');
 
-let events = [];        
-let visibleEvents = []; 
+let events = [];        // усі події
+let visibleEvents = []; // ті, що реально показуються
 
 let currentPage = 1;
 const perPage = 20;
@@ -14,6 +14,9 @@ export function getEvents() {
 }
 export function getVisibleEvents() {
   return visibleEvents;
+}
+export function setVisibleEvents(list) {
+  visibleEvents = list;
 }
 
 function fetchEvents(countryCode = 'US') {
@@ -25,7 +28,7 @@ function fetchEvents(countryCode = 'US') {
       visibleEvents = [...events]; 
       currentPage = 1;
       renderEvents(visibleEvents);
-      initSearch(); 
+      initSearch();       
       setupPagination();
     })
     .catch(err => console.error(err));
