@@ -2,6 +2,7 @@ import { BASE_URL, KEY } from './base-api.js';
 import { initSearch } from './filter.js';
 
 const eventsContainer = document.getElementById('events');
+const paginationContainer = document.querySelector('.pagination');
 let events = [];
 
 let currentPage = 1;
@@ -12,19 +13,19 @@ export function getEvents() {
 }
 
 function fetchEvents(countryCode = 'US') {
-  const url = `${BASE_URL}events.json?countryCode=${countryCode}&apikey=${KEY}`;
+  const url = `${BASE_URL}events.json?countryCode=${countryCode}&apikey=${KEY}&size=200`;  
+
   fetch(url)
     .then(res => res.json())
     .then(data => {
       events = data._embedded?.events || [];
       currentPage = 1;
-      renderEvents(events);
+      renderEvents();
       initSearch(events); 
       setupPagination();
     })
     .catch(err => console.error(err));
 }
-
 export function renderEvents() {
   eventsContainer.innerHTML = '';
   if (!events || events.length === 0) {
@@ -56,24 +57,27 @@ export function renderEvents() {
 }
 
 function setupPagination() {
-  const buttons = document.querySelectorAll('.pagination-btn');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const page = btn.textContent.trim();
-      if (page === '...') return;
+  paginationContainer.innerHTML = '';
 
-      const totalPages = Math.ceil(events.length / perPage);
-      let newPage = Number(page);
+  const totalPages = Math.ceil(events.length / perPage);
 
-      if (newPage > totalPages) newPage = totalPages;
-      if (newPage < 1) newPage = 1;
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.classList.add('pagination-btn');
+    btn.textContent = i;
 
-      currentPage = newPage;
-      renderEvents(events);
-      buttons.forEach(b => b.classList.remove('active'));
+    if (i === currentPage) {
       btn.classList.add('active');
+    }
+
+    btn.addEventListener('click', () => {
+      currentPage = i;
+      renderEvents();
+      setupPagination();
     });
-  });
+
+    paginationContainer.appendChild(btn);
+  }
 }
 
 export function renderEventsByCountry(code) {
