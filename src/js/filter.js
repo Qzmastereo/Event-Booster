@@ -1,4 +1,4 @@
-import { renderEvents, getEvents, setVisibleEvents } from './main.js';
+import { getEvents, setVisibleEvents } from './main.js';
 
 function debounce(func, delay) {
   let timer;
@@ -13,11 +13,10 @@ export function initSearch() {
 
   const handleSearch = debounce(() => {
     const query = searchInput.value.toLowerCase().trim();
-    const allEvents = getEvents(); 
+    const allEvents = getEvents();
 
     if (!query) {
       setVisibleEvents([...allEvents]);
-      renderEvents(allEvents);
       return;
     }
 
@@ -25,14 +24,8 @@ export function initSearch() {
       ev.name.toLowerCase().includes(query)
     );
 
-    if (filtered.length === 0) {
-      document.getElementById('events').innerHTML = `<p class="no-events">Події не знайдено</p>`;
-      return;
-    }
-
     setVisibleEvents(filtered);
-    renderEvents(filtered);
-  }, 800);
+  }, 500);
 
   searchInput.addEventListener('input', handleSearch);
 }
