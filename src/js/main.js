@@ -1,5 +1,10 @@
 import { BASE_URL, KEY } from './base-api.js';
 import { initSearch } from './filter.js';
+import { modalWindow } from './modal.js';
+export function getCurrentPage() {
+  return currentPage;
+}
+
 
 const eventsContainer = document.getElementById('events');
 let events = [];
@@ -55,6 +60,8 @@ export function renderEvents() {
   });
 }
 
+modalWindow();
+
 function setupPagination() {
   const buttons = document.querySelectorAll('.pagination-btn');
   buttons.forEach(btn => {
@@ -79,5 +86,8 @@ function setupPagination() {
 export function renderEventsByCountry(code) {
   fetchEvents(code);
 }
+
+
+
 
 fetchEvents();
