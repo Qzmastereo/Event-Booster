@@ -1,5 +1,4 @@
-import { renderEvents, getEvents } from './main.js';
-
+import { getEvents, setVisibleEvents } from './main.js';
 
 function debounce(func, delay) {
   let timer;
@@ -12,27 +11,21 @@ function debounce(func, delay) {
 export function initSearch() {
   const searchInput = document.querySelector('.form-control');
 
-
   const handleSearch = debounce(() => {
     const query = searchInput.value.toLowerCase().trim();
-    const events = getEvents(); 
+    const allEvents = getEvents();
 
     if (!query) {
-      renderEvents(events);
+      setVisibleEvents([...allEvents]);
       return;
     }
 
-    const filtered = events.filter(ev =>
+    const filtered = allEvents.filter(ev =>
       ev.name.toLowerCase().includes(query)
     );
 
-    if (filtered.length === 0) {
-      document.getElementById('events').innerHTML = `<p class="no-events">Події не знайдено</p>`;
-      return;
-    }
-
-    renderEvents(filtered);
-  }, 800);
+    setVisibleEvents(filtered);
+  }, 500);
 
   searchInput.addEventListener('input', handleSearch);
 }
