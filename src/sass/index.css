@@ -462,6 +462,74 @@ body {
   transform: scale(1);
 }
 
+.modal-window {
+  background-color: #FFF2FD;
+  width: 942;
+  height: 1023;
+  border-top-left-radius: 32%;
+  border-bottom-right-radius: 32%;
+  display: flex;
+  flex-direction: column;
+  padding: 62px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-event-logo {
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+  position: relative;
+  bottom: 40px;
+}
+
+.modal-event-img {
+  width: 360px;
+  height: 641px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.modal-close-btn {
+  position: relative;
+  bottom: 10%;
+  left: 46%;
+  width: 25px;
+  height: 25px;
+  border: none;
+  background: transparent;
+  background-image: url("");
+  transition: box-shadow 0.3s ease;
+}
+
+.close-icon:hover {
+  box-shadow: 0 0 16px 8px rgb(255, 255, 255), 0 0 25px 10px rgba(49, 52, 238, 0.9);
+}
+
+.card-container {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  padding: 0 30px;
+  gap: 60px;
+}
+
+.title-card {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 100%;
+  text-align: left;
+  margin-top: 0;
+}
+
+.text-card {
+  color: black;
+  font-size: 18px;
+  text-align: left;
+  width: 450px;
+  margin-top: 0;
+}
+
 .preloader {
   position: fixed;
   top: 0;
@@ -590,4 +658,71 @@ body {
   50% {
     opacity: 1;
   }
+}
+.modal-window {
+  background-color: #FFF2FD;
+  width: 942;
+  height: 1023;
+  border-top-left-radius: 32%;
+  border-bottom-right-radius: 32%;
+  display: flex;
+  flex-direction: column;
+  padding: 62px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-event-logo {
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+  position: relative;
+  bottom: 40px;
+}
+
+.modal-event-img {
+  width: 360px;
+  height: 641px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.modal-close-btn {
+  position: relative;
+  bottom: 10%;
+  left: 46%;
+  width: 25px;
+  height: 25px;
+  border: none;
+  background: transparent;
+  background-image: url("");
+  transition: box-shadow 0.3s ease;
+}
+
+.close-icon:hover {
+  box-shadow: 0 0 16px 8px rgb(255, 255, 255), 0 0 25px 10px rgba(49, 52, 238, 0.9);
+}
+
+.card-container {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  padding: 0 30px;
+  gap: 60px;
+}
+
+.title-card {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 100%;
+  text-align: left;
+  margin-top: 0;
+}
+
+.text-card {
+  color: black;
+  font-size: 18px;
+  text-align: left;
+  width: 450px;
+  margin-top: 0;
 }/*# sourceMappingURL=index.css.map */
