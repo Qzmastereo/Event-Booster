@@ -7,14 +7,17 @@ const modalImg = modal.querySelector('.modal-event-img');
 const modalLogo = modal.querySelector('.modal-event-logo');
 const modalInfo = modal.querySelector('.card-info');
 const modalInfoFull = document.querySelector('.card-info-full');
+
 const modalDate = modal.querySelector('.card-date');
 const modalPlace = modal.querySelector('.card-place');
 const modalArtists = modal.querySelector('.card-arthour');
 const modalPrices = modal.querySelectorAll('.card-price-st, .card-price-vip');
+
 const body = document.body;
 const viewFull = document.querySelector('.view-full');
 const closeFull = document.querySelector('.close-full');
 const infoModal = document.querySelector('.info-modal')
+
 
 export function modalWindow() {
   const eventsContainer = document.getElementById('events');
@@ -45,6 +48,7 @@ export function modalWindow() {
     modalImg.src = image;
     modalLogo.src = image;
     if (info.length > 125) {
+
       modalInfo.textContent = info.slice(0, 125) + '...';
  
       viewFull.addEventListener('click', () => {
@@ -58,6 +62,7 @@ export function modalWindow() {
     } else {
       modalInfo.textContent = info;
     }
+
 
     modalDate.textContent = date;
     modalPlace.textContent = `${city}, ${place}`;
@@ -75,6 +80,7 @@ export function modalWindow() {
     modal.classList.remove('closed')
     modal.classList.add('open');
     backDrop.classList.remove('is-hidden')
+
     body.classList.add('no-scroll')
   });
 

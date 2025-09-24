@@ -1,5 +1,7 @@
 import { BASE_URL, KEY } from './base-api.js';
 import { initSearch } from './filter.js';
+import { modalWindow } from './modal.js';
+
 export function getCurrentPage() {
   return currentPage;
 }
@@ -73,6 +75,8 @@ export function renderEvents(list = visibleEvents) {
   });
 }
 
+modalWindow();
+
 function setupPagination() {
   paginationContainer.innerHTML = '';
 
@@ -100,4 +104,6 @@ export function renderEventsByCountry(code) {
 }
 
 
+
 fetchEvents();
+

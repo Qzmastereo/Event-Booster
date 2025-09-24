@@ -9,22 +9,6 @@
   padding: 0 16px; 
 }
 
-
-@media screen and (max-width: 1024px) {
-  .section {
-    gap: 40px;
-    max-width: 900px;
-  }
-}
-
-
-@media screen and (max-width: 768px) {
-  .section {
-    gap: 24px;
-    max-width: 100%;
-    margin-bottom: 40px;
-  }
-}
 .card {
   width: 194px;
   background: #1c1c1c;
@@ -192,5 +176,11 @@
   .card {
     width: 240px;
     height: auto;
+  }
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 }

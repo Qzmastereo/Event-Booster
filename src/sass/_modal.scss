@@ -6,6 +6,7 @@
     display: block;
 }
 
+
 .body .backdrop {
     overflow: hidden !important;
 }
@@ -13,6 +14,7 @@
 .no-scroll {
     overflow: hidden;
 }
+
 
 .backdrop {
     position: fixed;
@@ -34,8 +36,6 @@
     
 }
 
-
-
 .modal-window {
     background-color: #FFF2FD;
     width: 942;
@@ -51,6 +51,7 @@
     bottom: 30px;
     left: 19%;
     overflow: hidden;
+
 }
 
 
