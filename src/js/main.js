@@ -1,5 +1,9 @@
 import { BASE_URL, KEY } from './base-api.js';
 import { initSearch } from './filter.js';
+export function getCurrentPage() {
+  return currentPage;
+}
+
 
 const eventsContainer = document.getElementById('events');
 const paginationContainer = document.querySelector('.pagination');

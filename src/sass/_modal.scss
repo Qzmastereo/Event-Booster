@@ -1,0 +1,194 @@
+.closed {
+    display: none !important;
+}
+
+.open {
+    display: block;
+}
+
+.body .backdrop {
+    overflow: hidden !important;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: opacity 500ms cubic-bezier(0.83, -0.08, 0.32, 1),
+    visibility 500ms cubic-bezier(0.83, -0.08, 0.32, 1);
+    z-index: 999;
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    transition: opacity 500ms cubic-bezier(0.83, -0.08, 0.32, 1), visibility 500ms cubic-bezier(0.83, -0.08, 0.32, 1);
+    pointer-events: none;
+    
+}
+
+
+
+.modal-window {
+    background-color: #FFF2FD;
+    width: 942;
+    height: 1023;
+    border-top-left-radius: 300px;
+    border-bottom-right-radius: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 62px 0;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 30px;
+    left: 19%;
+    overflow: hidden;
+}
+
+
+.modal-event-logo {
+    border-radius: 50%;
+    height: 130px;
+    width: 130px;
+    position: relative;
+    bottom: 40px;
+}
+
+.modal-event-img {
+    width: 360px;
+    height: 641px;
+    object-fit: cover;
+}
+
+.modal-close-btn {
+    padding: 0;
+    position: relative;
+    bottom: 10%;
+    left: 46%;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: transparent;    
+    
+}
+
+.text-card-container {
+    height: 641px;
+}
+
+.icon-close {
+    display: block;
+    font-size: 25px;
+}
+
+.icon-close::before {
+    transition: color 0.3s ease;
+}
+
+.icon-ticket1 {
+    font-size: 19px;
+    margin-right: 10px;
+    color: black;
+}
+
+.icon-close:hover::before {
+    color: #dc56c5;
+
+}
+
+.card-container {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    padding: 0 30px;
+    gap: 60px;
+}
+
+.title-card {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 100%;
+    text-align: left;
+    margin-top: 0;
+}
+
+.text-card {
+    color: black;
+    font-size: 18px;
+    text-align: left;
+    width: 450px;
+    margin-top: 0;
+}
+
+.buy-tickets {
+    background-color: #4C00FE;
+    border: none;
+    margin-bottom: 31px;
+    width: 145px;
+    height: 40px;
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: 500;
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}
+
+.price-contaiener {
+    display: flex;
+}
+
+.info-modal {
+    position: fixed;
+    top: 8%;
+    left: 30%;
+    width: 600px;
+    background-color: #dc56c5;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.info-modal.is-hidden {
+    display: none;
+    opacity: 0;
+    transition: opacity 300ms cubic-bezier(0.83, -0.08, 0.32, 1), visibility 500ms cubic-bezier(0.83, -0.08, 0.32, 1);
+    pointer-events: none;
+}
+
+.info-button {
+    border: none;
+    padding: 10px;
+}
+
+.view-full {
+    background-color: #dc56c5;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.close-full {
+    background-color: black;
+    color: #dc56c5;
+}
+
+.card-info-full {
+    padding: 10px;
+    font-size: 24px;
+}
