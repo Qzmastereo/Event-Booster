@@ -6,10 +6,18 @@ const closeBtn = document.querySelector('.modal-close-btn');
 const modalImg = modal.querySelector('.modal-event-img');
 const modalLogo = modal.querySelector('.modal-event-logo');
 const modalInfo = modal.querySelector('.card-info');
+const modalInfoFull = document.querySelector('.card-info-full');
+
 const modalDate = modal.querySelector('.card-date');
 const modalPlace = modal.querySelector('.card-place');
 const modalArtists = modal.querySelector('.card-arthour');
 const modalPrices = modal.querySelectorAll('.card-price-st, .card-price-vip');
+
+const body = document.body;
+const viewFull = document.querySelector('.view-full');
+const closeFull = document.querySelector('.close-full');
+const infoModal = document.querySelector('.info-modal')
+
 
 export function modalWindow() {
   const eventsContainer = document.getElementById('events');
@@ -40,21 +48,22 @@ export function modalWindow() {
     modalImg.src = image;
     modalLogo.src = image;
     if (info.length > 125) {
-        modalInfo.textContent = info.slice(0, 125) + '...';
-      
-        const viewFull = document.createElement('button');
-        viewFull.textContent = 'View Full';
-        viewFull.classList.add('view-full-btn'); // optional styling
-        viewFull.addEventListener('click', () => {
-          modalInfo.textContent = info;
-          viewFull.remove(); // remove button after expanding
-        });
-      
-        modalInfo.appendChild(viewFull);
-      } else {
-        modalInfo.textContent = info;
-      }
-      
+
+      modalInfo.textContent = info.slice(0, 125) + '...';
+ 
+      viewFull.addEventListener('click', () => {
+        modalInfoFull.textContent = info;
+        infoModal.classList.remove('is-hidden')
+      });
+      closeFull.addEventListener('click', () => {
+        infoModal.classList.add('is-hidden')
+      })
+
+    } else {
+      modalInfo.textContent = info;
+    }
+
+
     modalDate.textContent = date;
     modalPlace.textContent = `${city}, ${place}`;
     modalArtists.textContent = artists;
@@ -71,15 +80,22 @@ export function modalWindow() {
     modal.classList.remove('closed')
     modal.classList.add('open');
     backDrop.classList.remove('is-hidden')
+
+    body.classList.add('no-scroll')
   });
 
   closeBtn.addEventListener('click', () => {
-    modal.classList.add('closed')
+    modal.classList.add('closed');
     modal.classList.remove('open');
-    backDrop.classList.add('is-hidden')
+    backDrop.classList.add('is-hidden');
+    body.classList.remove('no-scroll')
   });
 
   window.addEventListener('keydown', e => {
-    if (e.key === 'Escape') modal.classList.remove('open');
+    if (e.key === 'Escape') {
+      modal.classList.remove('open')
+      modal.classList.add('closed')
+    };
   });
 }
+

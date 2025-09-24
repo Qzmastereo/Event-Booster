@@ -1,6 +1,7 @@
 import { BASE_URL, KEY } from './base-api.js';
 import { initSearch } from './filter.js';
 import { modalWindow } from './modal.js';
+
 export function getCurrentPage() {
   return currentPage;
 }
