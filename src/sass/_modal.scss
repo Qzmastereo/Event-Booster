@@ -155,8 +155,9 @@
 
 .info-modal {
     position: fixed;
-    top: 8%;
-    left: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 600px;
     background-color: #dc56c5;
     border-top-left-radius: 30px;

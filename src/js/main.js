@@ -37,6 +37,7 @@ function fetchEvents(countryCode = 'US') {
     .then(res => res.json())
     .then(data => {
       events = data._embedded?.events || [];
+      console.log(events)
       visibleEvents = [...events]; 
       currentPage = 1;
       renderEvents();
