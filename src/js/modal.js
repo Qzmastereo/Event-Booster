@@ -69,15 +69,15 @@ export function modalWindow() {
     modalPlace.textContent = `${city}, ${place}`;
     modalArtists.textContent = artists;
 
-    if (priceRanges.length > 0) {
-      modalPrices[0].textContent = `🎟 ${priceRanges[0].type} ${priceRanges[0].min}–${priceRanges[0].max} ${priceRanges[0].currency}`;
-      modalPrices[1].textContent = priceRanges[1]
-        ? `🎟 ${priceRanges[1].type} ${priceRanges[1].min}–${priceRanges[1].max} ${priceRanges[1].currency}`
-        : '';
-    } else {
-      modalPrices[0].textContent = 'Ціни не вказані';
-      modalPrices[1].textContent = '';
-    }
+    // if (priceRanges.length > 0) {
+    //   modalPrices[0].textContent = `🎟 ${priceRanges[0].type} ${priceRanges[0].min}–${priceRanges[0].max} ${priceRanges[0].currency}`;
+    //   modalPrices[1].textContent = priceRanges[1]
+    //     ? `🎟 ${priceRanges[1].type} ${priceRanges[1].min}–${priceRanges[1].max} ${priceRanges[1].currency}`
+    //     : '';
+    // } else {
+    //   modalPrices[0].textContent = 'Ціни не вказані';
+    //   modalPrices[1].textContent = '';
+    // }
     modal.classList.remove('closed')
     modal.classList.add('open');
     backDrop.classList.remove('is-hidden')
@@ -94,8 +94,10 @@ export function modalWindow() {
 
   window.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
+      backDrop.classList.add('is-hidden');
       modal.classList.remove('open')
       modal.classList.add('closed')
+      body.classList.remove('no-scroll')
     };
   });
 }
