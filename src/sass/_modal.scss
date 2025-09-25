@@ -48,8 +48,9 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    bottom: 30px;
-    left: 19%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     overflow: hidden;
 
 }
