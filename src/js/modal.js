@@ -48,7 +48,7 @@ export function modalWindow() {
     modalImg.src = image;
     modalLogo.src = image;
     if (info.length > 125) {
-
+      viewFull.classList.remove('invisible')
       modalInfo.textContent = info.slice(0, 125) + '...';
  
       viewFull.addEventListener('click', () => {
@@ -60,6 +60,7 @@ export function modalWindow() {
       })
 
     } else {
+      viewFull.classList.add('invisible')
       modalInfo.textContent = info;
     }
 
