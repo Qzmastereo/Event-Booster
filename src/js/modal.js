@@ -16,7 +16,8 @@ const modalPrices = modal.querySelectorAll('.card-price-st, .card-price-vip');
 const body = document.body;
 const viewFull = document.querySelector('.view-full');
 const closeFull = document.querySelector('.close-full');
-const infoModal = document.querySelector('.info-modal')
+const infoModal = document.querySelector('.info-modal');
+infoModal.style.display = 'none';
 
 
 export function modalWindow() {
@@ -54,9 +55,13 @@ export function modalWindow() {
       viewFull.addEventListener('click', () => {
         modalInfoFull.textContent = info;
         infoModal.classList.remove('is-hidden')
+        infoModal.style.display = 'flex';
       });
       closeFull.addEventListener('click', () => {
-        infoModal.classList.add('is-hidden')
+        infoModal.classList.add('is-hidden');
+        setTimeout(() => {
+          infoModal.style.display = 'none';
+        }, 500);
       })
 
     } else {
