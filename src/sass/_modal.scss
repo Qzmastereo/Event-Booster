@@ -58,8 +58,8 @@
 
 .modal-event-logo {
     border-radius: 50%;
-    height: 130px;
-    width: 130px;
+    height: 132px;
+    width: 132px;
     position: relative;
     bottom: 40px;
 }
@@ -73,7 +73,7 @@
 .modal-close-btn {
     padding: 0;
     position: relative;
-    bottom: 10%;
+    bottom: 4%;
     left: 46%;
     width: 25px;
     height: 25px;
@@ -89,6 +89,7 @@
 .icon-close {
     display: block;
     font-size: 25px;
+    cursor: pointer;
 }
 
 .icon-close::before {
@@ -139,6 +140,7 @@
     color: white;
     font-family: 'Montserrat';
     font-weight: 500;
+    border-radius: 5px;
 }
 
 .visible {
@@ -162,22 +164,24 @@
     background-color: #dc56c5;
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    display: flex;
     align-items: center;
     flex-direction: column;
     padding: 20px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 500ms ease, visibility 500ms ease;
 }
 
 .info-modal.is-hidden {
-    display: none;
     opacity: 0;
-    transition: opacity 300ms cubic-bezier(0.83, -0.08, 0.32, 1), visibility 500ms cubic-bezier(0.83, -0.08, 0.32, 1);
+    visibility: hidden;
     pointer-events: none;
 }
 
 .info-button {
     border: none;
     padding: 10px;
+    cursor: pointer;
 }
 
 .view-full {
@@ -195,3 +199,41 @@
     padding: 10px;
     font-size: 24px;
 }
+
+.more-button {
+    margin-bottom: 31px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    border-radius: 5px;
+    color: #4C00FE;
+    border: 1px solid #4C00FE;
+    width: 255px;
+    height: 40px;
+    background-color: transparent;
+    margin-top: 45px;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 1279px) and (min-width: 768px) {
+    .modal-window {
+        width: 595px;
+        height: 831px;
+    }
+
+    .modal-event-logo {
+        width: 70px;
+        transform: scaleY(1.5);
+    }
+
+    .modal-event-img {
+        width: 233px;
+        height: 416px;
+    }
+
+    .modal-close-btn {
+        bottom: 0;
+        left: 4px;
+    }
+
+  }
