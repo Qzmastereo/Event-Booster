@@ -17,7 +17,6 @@ const body = document.body;
 const viewFull = document.querySelector('.view-full');
 const closeFull = document.querySelector('.close-full');
 const infoModal = document.querySelector('.info-modal');
-infoModal.style.display = 'none';
 
 
 export function modalWindow() {
@@ -55,13 +54,9 @@ export function modalWindow() {
       viewFull.addEventListener('click', () => {
         modalInfoFull.textContent = info;
         infoModal.classList.remove('is-hidden')
-        infoModal.style.display = 'flex';
       });
       closeFull.addEventListener('click', () => {
         infoModal.classList.add('is-hidden');
-        setTimeout(() => {
-          infoModal.style.display = 'none';
-        }, 500);
       })
 
     } else {
@@ -75,9 +70,9 @@ export function modalWindow() {
     modalArtists.textContent = artists;
 
     // if (priceRanges.length > 0) {
-    //   modalPrices[0].textContent = `🎟 ${priceRanges[0].type} ${priceRanges[0].min}–${priceRanges[0].max} ${priceRanges[0].currency}`;
+    //   modalPrices[0].textContent = `${priceRanges[0].type} ${priceRanges[0].min}–${priceRanges[0].max} ${priceRanges[0].currency}`;
     //   modalPrices[1].textContent = priceRanges[1]
-    //     ? `🎟 ${priceRanges[1].type} ${priceRanges[1].min}–${priceRanges[1].max} ${priceRanges[1].currency}`
+    //     ? `${priceRanges[1].type} ${priceRanges[1].min}–${priceRanges[1].max} ${priceRanges[1].currency}`
     //     : '';
     // } else {
     //   modalPrices[0].textContent = 'Ціни не вказані';
@@ -86,7 +81,6 @@ export function modalWindow() {
     modal.classList.remove('closed')
     modal.classList.add('open');
     backDrop.classList.remove('is-hidden')
-
     body.classList.add('no-scroll')
   });
 
@@ -95,6 +89,7 @@ export function modalWindow() {
     modal.classList.remove('open');
     backDrop.classList.add('is-hidden');
     body.classList.remove('no-scroll')
+    infoModal.classList.add('is-hidden');
   });
 
   window.addEventListener('keydown', e => {
